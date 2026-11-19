@@ -69,6 +69,14 @@ class TopupDto {
   @IsString() @MaxLength(300) receiptRef!: string;
 }
 
+class SellerProfileDto {
+  @IsOptional() @IsString() @MaxLength(100) displayName?: string;
+  @IsOptional() @IsString() @MaxLength(300) bio?: string;
+  @IsOptional() @IsString() @MaxLength(500) whatsappMessageTemplate?: string;
+  @IsOptional() @IsString() @MaxLength(500) messengerUrl?: string;
+  @IsOptional() @IsString() @Matches(/^(\+?216)?[2459]\d{7}$/) whatsapp?: string;
+}
+
 const codeAlphabet = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
 
 @Controller('seller')
@@ -101,6 +109,98 @@ export class SellerController {
       totalListings: listings._count.id,
       codesGenerated: generated,
     };
+  }
+
+  @Get('analytics')
+  async analytics(@Req() req: AuthRequest) {
+    const now = new Date();
+    const monthStart = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1));
+    const weekStart = new Date(now);
+    weekStart.setUTCHours(0, 0, 0, 0);
+    weekStart.setUTCDate(weekStart.getUTCDate() - 6);
+
+    const [downloadsAllTime, downloadsThisMonth, codesGeneratedThisMonth, dailyRows, resourceGroups] = await Promise.all([
+      this.prisma.downloadLog.count({ where: { code: { sellerId: req.user.sub } } }),
+      this.prisma.downloadLog.count({ where: { code: { sellerId: req.user.sub }, downloadedAt: { gte: monthStart } } }),
+      this.prisma.downloadCode.count({ where: { sellerId: req.user.sub, createdAt: { gte: monthStart } } }),
+      this.prisma.$queryRaw<Array<{ day: Date; downloads: number }>>`
+        SELECT date_trunc('day', logs.downloaded_at)::date AS day, COUNT(*)::int AS downloads
+        FROM download_logs AS logs
+        INNER JOIN download_codes AS codes ON codes.id = logs.code_id
+        WHERE codes.seller_id = ${req.user.sub}::uuid AND logs.downloaded_at >= ${weekStart}
+        GROUP BY date_trunc('day', logs.downloaded_at)::date
+        ORDER BY day
+      `,
+      this.prisma.downloadCode.groupBy({
+        by: ['listingId'],
+        where: { sellerId: req.user.sub },
+        _sum: { downloadCount: true },
+        orderBy: { _sum: { downloadCount: 'desc' } },
+      }),
+    ]);
+
+    const resources = await this.prisma.listing.findMany({
+      where: { sellerId: req.user.sub },
+      select: { id: true, title: true, priceTnd: true, contactClicks: true },
+    });
+    const downloadsByListing = new Map(resourceGroups.map((group) => [group.listingId, group._sum.downloadCount ?? 0]));
+    const dailyByDate = new Map(dailyRows.map((row) => [row.day.toISOString().slice(0, 10), row.downloads]));
+    const weeklyDownloads = Array.from({ length: 7 }, (_, index) => {
+      const day = new Date(weekStart);
+      day.setUTCDate(day.getUTCDate() + index);
+      const date = day.toISOString().slice(0, 10);
+      return { date, downloads: dailyByDate.get(date) ?? 0 };
+    });
+    const resourceStats = resources.map((listing) => {
+      const downloads = downloadsByListing.get(listing.id) ?? 0;
+      return {
+        listingId: listing.id,
+        title: listing.title,
+        downloads,
+        contactClicks: listing.contactClicks,
+        estimatedGrossTnd: Number(listing.priceTnd) * downloads,
+      };
+    }).sort((left, right) => right.downloads - left.downloads);
+    const topListings = resourceStats.slice(0, 5);
+
+    return {
+      downloadsAllTime,
+      downloadsThisMonth,
+      codesGeneratedThisMonth,
+      weeklyDownloads,
+      topListings,
+      resources: resourceStats,
+      estimatedGrossTnd: resourceStats.reduce((total, listing) => total + listing.estimatedGrossTnd, 0),
+    };
+  }
+
+  @Get('profile')
+  profile(@Req() req: AuthRequest) {
+    return this.prisma.sellerProfile.findUniqueOrThrow({
+      where: { userId: req.user.sub },
+      select: {
+        slug: true, displayName: true, whatsapp: true, bio: true, messengerUrl: true,
+        whatsappMessageTemplate: true, isVerified: true,
+      },
+    });
+  }
+
+  @Patch('profile')
+  async updateProfile(@Req() req: AuthRequest, @Body() body: SellerProfileDto) {
+    const data: Record<string, string | null> = {};
+    if (body.displayName !== undefined) data.displayName = body.displayName.trim();
+    if (body.bio !== undefined) data.bio = body.bio.trim() || null;
+    if (body.whatsappMessageTemplate !== undefined) data.whatsappMessageTemplate = body.whatsappMessageTemplate.trim();
+    if (body.messengerUrl !== undefined) data.messengerUrl = body.messengerUrl.trim() || null;
+    if (body.whatsapp !== undefined) data.whatsapp = normalizeTunisianPhone(body.whatsapp);
+    return this.prisma.sellerProfile.update({
+      where: { userId: req.user.sub },
+      data,
+      select: {
+        slug: true, displayName: true, whatsapp: true, bio: true, messengerUrl: true,
+        whatsappMessageTemplate: true, isVerified: true,
+      },
+    });
   }
 
   @Get('listings')
@@ -273,6 +373,12 @@ export class SellerController {
   async createTopup(@Req() req: AuthRequest, @Body() body: TopupDto) {
     if (body.topupType === 'CODE_PACK' && ![15, 50, 100].includes(body.packCodes ?? 0)) {
       throw new BadRequestException('Choose a supported code pack');
+    }
+    if (body.topupType === 'CODE_PACK') {
+      const packPrices: Record<number, number> = { 15: 15, 50: 35, 100: 50 };
+      if (Number(body.amountTnd) !== packPrices[body.packCodes ?? 0]) {
+        throw new BadRequestException('The code pack amount is incorrect');
+      }
     }
     if (body.topupType === 'BOOST' && (!body.listingId || ![7, 14, 30].includes(body.boostDays ?? 0))) {
       throw new BadRequestException('Choose a listing and a 7, 14, or 30 day boost');

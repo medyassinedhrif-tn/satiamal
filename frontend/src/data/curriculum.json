@@ -1,0 +1,709 @@
+{
+  "country": {
+    "fr": "Tunisie",
+    "ar": "تونس"
+  },
+  "curriculum_system": {
+    "fr": "Enseignement de Base et Secondaire (Ministère de l'Éducation)",
+    "ar": "التعليم الأساسي والثانوي (وزارة التربية)"
+  },
+  "grades": [
+    {
+      "grade_id": "1ere_primaire",
+      "grade_name": {
+        "fr": "1ère année primaire",
+        "ar": "السنة الأولى ابتدائي"
+      },
+      "cycle": {
+        "fr": "Enseignement Primaire",
+        "ar": "التعليم الابتدائي"
+      },
+      "subjects": [
+        { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+        { "fr": "Mathématiques", "ar": "الرياضيات" },
+        { "fr": "Éveil Scientifique", "ar": "الإيقاظ العلمي" },
+        { "fr": "Éducation Islamique", "ar": "التربية الإسلامية" },
+        { "fr": "Éducation Civique", "ar": "التربية المدنية" },
+        { "fr": "Éducation Musicale", "ar": "التربية الموسيقية" },
+        { "fr": "Éducation Plastique (Arts)", "ar": "التربية التشكيلية" },
+        { "fr": "Éducation Physique", "ar": "التربية البدنية" }
+      ]
+    },
+    {
+      "grade_id": "2eme_primaire",
+      "grade_name": {
+        "fr": "2ème année primaire",
+        "ar": "السنة الثانية ابتدائي"
+      },
+      "cycle": {
+        "fr": "Enseignement Primaire",
+        "ar": "التعليم الابتدائي"
+      },
+      "subjects": [
+        { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+        { "fr": "Mathématiques", "ar": "الرياضيات" },
+        { "fr": "Éveil Scientifique", "ar": "الإيقاظ العلمي" },
+        { "fr": "Éducation Islamique", "ar": "التربية الإسلامية" },
+        { "fr": "Éducation Civique", "ar": "التربية المدنية" },
+        { "fr": "Éducation Musicale", "ar": "التربية الموسيقية" },
+        { "fr": "Éducation Plastique (Arts)", "ar": "التربية التشكيلية" },
+        { "fr": "Éducation Physique", "ar": "التربية البدنية" }
+      ]
+    },
+    {
+      "grade_id": "3eme_primaire",
+      "grade_name": {
+        "fr": "3ème année primaire",
+        "ar": "السنة الثالثة ابتدائي"
+      },
+      "cycle": {
+        "fr": "Enseignement Primaire",
+        "ar": "التعليم الابتدائي"
+      },
+      "subjects": [
+        { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+        { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+        { "fr": "Mathématiques", "ar": "الرياضيات" },
+        { "fr": "Éveil Scientifique", "ar": "الإيقاظ العلمي" },
+        { "fr": "Éducation Islamique", "ar": "التربية الإسلامية" },
+        { "fr": "Éducation Civique", "ar": "التربية المدنية" },
+        { "fr": "Géographie", "ar": "الجغرافيا" },
+        { "fr": "Éducation Musicale", "ar": "التربية الموسيقية" },
+        { "fr": "Éducation Plastique (Arts)", "ar": "التربية التشكيلية" },
+        { "fr": "Éducation Physique", "ar": "التربية البدنية" }
+      ]
+    },
+    {
+      "grade_id": "4eme_primaire",
+      "grade_name": {
+        "fr": "4ème année primaire",
+        "ar": "السنة الرابعة ابتدائي"
+      },
+      "cycle": {
+        "fr": "Enseignement Primaire",
+        "ar": "التعليم الابتدائي"
+      },
+      "subjects": [
+        { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+        { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+        { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+        { "fr": "Mathématiques", "ar": "الرياضيات" },
+        { "fr": "Éveil Scientifique", "ar": "الإيقاظ العلمي" },
+        { "fr": "Éducation Islamique", "ar": "التربية الإسلامية" },
+        { "fr": "Éducation Civique", "ar": "التربية المدنية" },
+        { "fr": "Histoire", "ar": "التاريخ" },
+        { "fr": "Géographie", "ar": "الجغرافيا" },
+        { "fr": "Éducation Musicale", "ar": "التربية الموسيقية" },
+        { "fr": "Éducation Plastique (Arts)", "ar": "التربية التشكيلية" },
+        { "fr": "Éducation Physique", "ar": "التربية البدنية" }
+      ]
+    },
+    {
+      "grade_id": "5eme_primaire",
+      "grade_name": {
+        "fr": "5ème année primaire",
+        "ar": "السنة الخامسة ابتدائي"
+      },
+      "cycle": {
+        "fr": "Enseignement Primaire",
+        "ar": "التعليم الابتدائي"
+      },
+      "subjects": [
+        { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+        { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+        { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+        { "fr": "Mathématiques", "ar": "الرياضيات" },
+        { "fr": "Éveil Scientifique", "ar": "الإيقاظ العلمي" },
+        { "fr": "Éducation Islamique", "ar": "التربية الإسلامية" },
+        { "fr": "Éducation Civique", "ar": "التربية المدنية" },
+        { "fr": "Histoire", "ar": "التاريخ" },
+        { "fr": "Géographie", "ar": "الجغرافيا" },
+        { "fr": "Éducation Technique", "ar": "التربية التكنولوجية" },
+        { "fr": "Éducation Musicale", "ar": "التربية الموسيقية" },
+        { "fr": "Éducation Plastique (Arts)", "ar": "التربية التشكيلية" },
+        { "fr": "Éducation Physique", "ar": "التربية البدنية" }
+      ]
+    },
+    {
+      "grade_id": "6eme_primaire",
+      "grade_name": {
+        "fr": "6ème année primaire",
+        "ar": "السنة السادسة ابتدائي"
+      },
+      "cycle": {
+        "fr": "Enseignement Primaire",
+        "ar": "التعليم الابتدائي"
+      },
+      "national_exam": {
+        "fr": "Concours d'accès aux collèges pilotes (Sixième - Optionnel)",
+        "ar": "مناظرة الدخول إلى المدارس الإعدادية النموذجية (السيزيام - اختياري)"
+      },
+      "subjects": [
+        { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+        { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+        { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+        { "fr": "Mathématiques", "ar": "الرياضيات" },
+        { "fr": "Éveil Scientifique", "ar": "الإيقاظ العلمي" },
+        { "fr": "Éducation Islamique", "ar": "التربية الإسلامية" },
+        { "fr": "Éducation Civique", "ar": "التربية المدنية" },
+        { "fr": "Histoire", "ar": "التاريخ" },
+        { "fr": "Géographie", "ar": "الجغرافيا" },
+        { "fr": "Éducation Technique", "ar": "التربية التكنولوجية" },
+        { "fr": "Éducation Musicale", "ar": "التربية الموسيقية" },
+        { "fr": "Éducation Plastique (Arts)", "ar": "التربية التشكيلية" },
+        { "fr": "Éducation Physique", "ar": "التربية البدنية" }
+      ]
+    },
+    {
+      "grade_id": "7eme_base",
+      "grade_name": {
+        "fr": "7ème année de base",
+        "ar": "السنة السابعة أساسي"
+      },
+      "cycle": {
+        "fr": "Enseignement Préparatoire (Collège)",
+        "ar": "التعليم الإعدادي"
+      },
+      "subjects": [
+        { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+        { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+        { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+        { "fr": "Mathématiques", "ar": "الرياضيات" },
+        { "fr": "Sciences de la Vie et de la Terre (SVT)", "ar": "علوم الحياة والأرض" },
+        { "fr": "Sciences Physiques", "ar": "العلوم الفيزيائية" },
+        { "fr": "Informatique", "ar": "الإعلامية" },
+        { "fr": "Éducation Technique (Technologie)", "ar": "التكنولوجيا" },
+        { "fr": "Histoire", "ar": "التاريخ" },
+        { "fr": "Géographie", "ar": "الجغرافيا" },
+        { "fr": "Éducation Civique", "ar": "التربية المدنية" },
+        { "fr": "Éducation Islamique", "ar": "التربية الإسلامية" },
+        { "fr": "Éducation Musicale", "ar": "التربية الموسيقية" },
+        { "fr": "Éducation Plastique", "ar": "التربية التشكيلية" },
+        { "fr": "Éducation Physique", "ar": "التربية البدنية" }
+      ]
+    },
+    {
+      "grade_id": "8eme_base",
+      "grade_name": {
+        "fr": "8ème année de base",
+        "ar": "السنة الثامنة أساسي"
+      },
+      "cycle": {
+        "fr": "Enseignement Préparatoire (Collège)",
+        "ar": "التعليم الإعدادي"
+      },
+      "subjects": [
+        { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+        { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+        { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+        { "fr": "Mathématiques", "ar": "الرياضيات" },
+        { "fr": "Sciences de la Vie et de la Terre (SVT)", "ar": "علوم الحياة والأرض" },
+        { "fr": "Sciences Physiques", "ar": "العلوم الفيزيائية" },
+        { "fr": "Informatique", "ar": "الإعلامية" },
+        { "fr": "Éducation Technique (Technologie)", "ar": "التكنولوجيا" },
+        { "fr": "Histoire", "ar": "التاريخ" },
+        { "fr": "Géographie", "ar": "الجغرافيا" },
+        { "fr": "Éducation Civique", "ar": "التربية المدنية" },
+        { "fr": "Éducation Islamique", "ar": "التربية الإسلامية" },
+        { "fr": "Éducation Musicale", "ar": "التربية الموسيقية" },
+        { "fr": "Éducation Plastique", "ar": "التربية التشكيلية" },
+        { "fr": "Éducation Physique", "ar": "التربية البدنية" }
+      ]
+    },
+    {
+      "grade_id": "9eme_base",
+      "grade_name": {
+        "fr": "9ème année de base",
+        "ar": "السنة التاسعة أساسي"
+      },
+      "cycle": {
+        "fr": "Enseignement Préparatoire (Collège)",
+        "ar": "التعليم الإعدادي"
+      },
+      "national_exam": {
+        "fr": "Diplôme de Fin d'Études de l'Enseignement de Base (Neuvième)",
+        "ar": "شهادة ختم التعليم الأساسي (النوفيام)"
+      },
+      "subjects": [
+        { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+        { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+        { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+        { "fr": "Mathématiques", "ar": "الرياضيات" },
+        { "fr": "Sciences de la Vie et de la Terre (SVT)", "ar": "علوم الحياة والأرض" },
+        { "fr": "Sciences Physiques", "ar": "العلوم الفيزيائية" },
+        { "fr": "Informatique", "ar": "الإعلامية" },
+        { "fr": "Éducation Technique (Technologie)", "ar": "التكنولوجيا" },
+        { "fr": "Histoire", "ar": "التاريخ" },
+        { "fr": "Géographie", "ar": "الجغرافيا" },
+        { "fr": "Éducation Civique", "ar": "التربية المدنية" },
+        { "fr": "Éducation Islamique", "ar": "التربية الإسلامية" },
+        { "fr": "Éducation Musicale", "ar": "التربية الموسيقية" },
+        { "fr": "Éducation Plastique", "ar": "التربية التشكيلية" },
+        { "fr": "Éducation Physique", "ar": "التربية البدنية" }
+      ]
+    },
+    {
+      "grade_id": "1ere_secondaire",
+      "grade_name": {
+        "fr": "1ère année secondaire (Tronc commun)",
+        "ar": "السنة الأولى ثانوي (جذع مشترك)"
+      },
+      "cycle": {
+        "fr": "Enseignement Secondaire (Lycée)",
+        "ar": "التعليم الثانوي"
+      },
+      "subjects": [
+        { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+        { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+        { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+        { "fr": "Mathématiques", "ar": "الرياضيات" },
+        { "fr": "Sciences Physiques", "ar": "العلوم الفيزيائية" },
+        { "fr": "Sciences de la Vie et de la Terre (SVT)", "ar": "علوم الحياة والأرض" },
+        { "fr": "Technologie", "ar": "التكنولوجيا" },
+        { "fr": "Informatique", "ar": "الإعلامية" },
+        { "fr": "Histoire", "ar": "التاريخ" },
+        { "fr": "Géographie", "ar": "الجغرافيا" },
+        { "fr": "Éducation Civique", "ar": "التربية المدنية" },
+        { "fr": "Pensée Islamique", "ar": "التفكير الإسلامي" },
+        { "fr": "Éducation Physique", "ar": "التربية البدنية" },
+        { "fr": "Éducation Musicale (Option)", "ar": "التربية الموسيقية (اختياري)" },
+        { "fr": "Éducation Plastique (Option)", "ar": "التربية التشكيلية (اختياري)" }
+      ]
+    },
+    {
+      "grade_id": "2eme_secondaire",
+      "grade_name": {
+        "fr": "2ème année secondaire",
+        "ar": "السنة الثانية ثانوي"
+      },
+      "cycle": {
+        "fr": "Enseignement Secondaire (Lycée)",
+        "ar": "التعليم الثانوي"
+      },
+      "specialities": [
+        {
+          "speciality_id": "sciences",
+          "name": {
+            "fr": "Sciences",
+            "ar": "شعبة العلوم"
+          },
+          "subjects": [
+            { "fr": "Mathématiques", "ar": "الرياضيات" },
+            { "fr": "Sciences Physiques", "ar": "العلوم الفيزيائية" },
+            { "fr": "Sciences de la Vie et de la Terre (SVT)", "ar": "علوم الحياة والأرض" },
+            { "fr": "Technologie", "ar": "التكنولوجيا" },
+            { "fr": "Informatique", "ar": "الإعلامية" },
+            { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+            { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+            { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+            { "fr": "Histoire", "ar": "التاريخ" },
+            { "fr": "Géographie", "ar": "الجغرافيا" },
+            { "fr": "Éducation Civique", "ar": "التربية المدنية" },
+            { "fr": "Pensée Islamique", "ar": "التفكير الإسلامي" },
+            { "fr": "Éducation Physique", "ar": "التربية البدنية" }
+          ]
+        },
+        {
+          "speciality_id": "economie_services",
+          "name": {
+            "fr": "Économie et Services",
+            "ar": "شعبة الاقتصاد والخدمات"
+          },
+          "subjects": [
+            { "fr": "Économie", "ar": "الاقتصاد" },
+            { "fr": "Gestion", "ar": "التصرف" },
+            { "fr": "Mathématiques", "ar": "الرياضيات" },
+            { "fr": "Informatique", "ar": "الإعلامية" },
+            { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+            { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+            { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+            { "fr": "Histoire", "ar": "التاريخ" },
+            { "fr": "Géographie", "ar": "الجغرافيا" },
+            { "fr": "Éducation Civique", "ar": "التربية المدنية" },
+            { "fr": "Pensée Islamique", "ar": "التفكير الإسلامي" },
+            { "fr": "Éducation Physique", "ar": "التربية البدنية" }
+          ]
+        },
+        {
+          "speciality_id": "lettres",
+          "name": {
+            "fr": "Lettres",
+            "ar": "شعبة الآداب"
+          },
+          "subjects": [
+            { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+            { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+            { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+            { "fr": "Histoire", "ar": "التاريخ" },
+            { "fr": "Géographie", "ar": "الجغرافيا" },
+            { "fr": "Pensée Islamique", "ar": "التفكير الإسلامي" },
+            { "fr": "Éducation Civique", "ar": "التربية المدنية" },
+            { "fr": "Mathématiques", "ar": "الرياضيات" },
+            { "fr": "Sciences de la Vie et de la Terre (SVT)", "ar": "علوم الحياة والأرض" },
+            { "fr": "Informatique", "ar": "الإعلامية" },
+            { "fr": "Éducation Physique", "ar": "التربية البدنية" }
+          ]
+        },
+        {
+          "speciality_id": "technologies_informatique",
+          "name": {
+            "fr": "Technologies de l'Informatique",
+            "ar": "شعبة تكنولوجيا الإعلامية"
+          },
+          "subjects": [
+            { "fr": "Algorithmique et Programmation", "ar": "الخوارزميات والبرمجة" },
+            { "fr": "Technologies de l'Information et de la Communication (TIC)", "ar": "تكنولوجيا المعلومات والاتصال" },
+            { "fr": "Mathématiques", "ar": "الرياضيات" },
+            { "fr": "Sciences Physiques", "ar": "العلوم الفيزيائية" },
+            { "fr": "Technologie", "ar": "التكنولوجيا" },
+            { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+            { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+            { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+            { "fr": "Histoire", "ar": "التاريخ" },
+            { "fr": "Géographie", "ar": "الجغرافيا" },
+            { "fr": "Éducation Civique", "ar": "التربية المدنية" },
+            { "fr": "Pensée Islamique", "ar": "التفكير الإسلامي" },
+            { "fr": "Éducation Physique", "ar": "التربية البدنية" }
+          ]
+        },
+        {
+          "speciality_id": "sport_2eme",
+          "name": {
+            "fr": "Sport (Lycées Sportifs)",
+            "ar": "شعبة الرياضة (المعاهد الرياضية)"
+          },
+          "subjects": [
+            { "fr": "Éducation Physique et Sportive (Spécialité)", "ar": "التربية البدنية والرياضية (اختصاص)" },
+            { "fr": "Sciences Biologiques", "ar": "العلوم البيولوجية" },
+            { "fr": "Sciences Physiques", "ar": "العلوم الفيزيائية" },
+            { "fr": "Mathématiques", "ar": "الرياضيات" },
+            { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+            { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+            { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+            { "fr": "Histoire", "ar": "التاريخ" },
+            { "fr": "Géographie", "ar": "الجغرافيا" },
+            { "fr": "Éducation Civique", "ar": "التربية المدنية" },
+            { "fr": "Pensée Islamique", "ar": "التفكير الإسلامي" },
+            { "fr": "Informatique", "ar": "الإعلامية" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade_id": "3eme_secondaire",
+      "grade_name": {
+        "fr": "3ème année secondaire",
+        "ar": "السنة الثالثة ثانوي"
+      },
+      "cycle": {
+        "fr": "Enseignement Secondaire (Lycée)",
+        "ar": "التعليم الثانوي"
+      },
+      "specialities": [
+        {
+          "speciality_id": "mathematiques",
+          "name": {
+            "fr": "Mathématiques",
+            "ar": "شعبة الرياضيات"
+          },
+          "subjects": [
+            { "fr": "Mathématiques", "ar": "الرياضيات" },
+            { "fr": "Sciences Physiques", "ar": "العلوم الفيزيائية" },
+            { "fr": "Sciences de la Vie et de la Terre (SVT)", "ar": "علوم الحياة والأرض" },
+            { "fr": "Informatique", "ar": "الإعلامية" },
+            { "fr": "Philosophie", "ar": "الفلسفة" },
+            { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+            { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+            { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+            { "fr": "Histoire", "ar": "التاريخ" },
+            { "fr": "Géographie", "ar": "الجغرافيا" },
+            { "fr": "Pensée Islamique", "ar": "التفكير الإسلامي" },
+            { "fr": "Éducation Physique", "ar": "التربية البدنية" },
+            { "fr": "Matière Optionnelle (Langue vivante 3 / Arts / Musique)", "ar": "مادة اختيارية (لغة أجنبية ثالثة / فنون / موسيقى)" }
+          ]
+        },
+        {
+          "speciality_id": "sciences_experimentales",
+          "name": {
+            "fr": "Sciences Expérimentales",
+            "ar": "شعبة العلوم التجريبية"
+          },
+          "subjects": [
+            { "fr": "Sciences de la Vie et de la Terre (SVT)", "ar": "علوم الحياة والأرض" },
+            { "fr": "Sciences Physiques", "ar": "العلوم الفيزيائية" },
+            { "fr": "Mathématiques", "ar": "الرياضيات" },
+            { "fr": "Informatique", "ar": "الإعلامية" },
+            { "fr": "Philosophie", "ar": "الفلسفة" },
+            { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+            { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+            { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+            { "fr": "Histoire", "ar": "التاريخ" },
+            { "fr": "Géographie", "ar": "الجغرافيا" },
+            { "fr": "Pensée Islamique", "ar": "التفكير الإسلامي" },
+            { "fr": "Éducation Physique", "ar": "التربية البدنية" },
+            { "fr": "Matière Optionnelle (Langue vivante 3 / Arts / Musique)", "ar": "مادة اختيارية (لغة أجنبية ثالثة / فنون / موسيقى)" }
+          ]
+        },
+        {
+          "speciality_id": "sciences_techniques",
+          "name": {
+            "fr": "Sciences Techniques",
+            "ar": "شعبة العلوم التقنية"
+          },
+          "subjects": [
+            { "fr": "Technologie (Génie Mécanique & Génie Électrique)", "ar": "التكنولوجيا (هندسة ميكانيكية وهندسة كهربائية)" },
+            { "fr": "Mathématiques", "ar": "الرياضيات" },
+            { "fr": "Sciences Physiques", "ar": "العلوم الفيزيائية" },
+            { "fr": "Informatique", "ar": "الإعلامية" },
+            { "fr": "Philosophie", "ar": "الفلسفة" },
+            { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+            { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+            { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+            { "fr": "Histoire", "ar": "التاريخ" },
+            { "fr": "Géographie", "ar": "الجغرافيا" },
+            { "fr": "Pensée Islamique", "ar": "التفكير الإسلامي" },
+            { "fr": "Éducation Physique", "ar": "التربية البدنية" },
+            { "fr": "Matière Optionnelle (Langue vivante 3 / Arts / Musique)", "ar": "مادة اختيارية (لغة أجنبية ثالثة / فنون / موسيقى)" }
+          ]
+        },
+        {
+          "speciality_id": "economie_gestion",
+          "name": {
+            "fr": "Économie et Gestion",
+            "ar": "شعبة الاقتصاد والتصرف"
+          },
+          "subjects": [
+            { "fr": "Économie", "ar": "الاقتصاد" },
+            { "fr": "Gestion", "ar": "التصرف" },
+            { "fr": "Mathématiques", "ar": "الرياضيات" },
+            { "fr": "Informatique", "ar": "الإعلامية" },
+            { "fr": "Histoire", "ar": "التاريخ" },
+            { "fr": "Géographie", "ar": "الجغرافيا" },
+            { "fr": "Philosophie", "ar": "الفلسفة" },
+            { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+            { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+            { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+            { "fr": "Pensée Islamique", "ar": "التفكير الإسلامي" },
+            { "fr": "Éducation Physique", "ar": "التربية البدنية" },
+            { "fr": "Matière Optionnelle (Langue vivante 3 / Arts / Musique)", "ar": "مادة اختيارية (لغة أجنبية ثالثة / فنون / موسيقى)" }
+          ]
+        },
+        {
+          "speciality_id": "lettres",
+          "name": {
+            "fr": "Lettres",
+            "ar": "شعبة الآداب"
+          },
+          "subjects": [
+            { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+            { "fr": "Philosophie", "ar": "الفلسفة" },
+            { "fr": "Histoire", "ar": "التاريخ" },
+            { "fr": "Géographie", "ar": "الجغرافيا" },
+            { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+            { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+            { "fr": "Pensée Islamique", "ar": "التفكير الإسلامي" },
+            { "fr": "Informatique", "ar": "الإعلامية" },
+            { "fr": "Éducation Physique", "ar": "التربية البدنية" },
+            { "fr": "Matière Optionnelle (Langue vivante 3 / Arts / Musique)", "ar": "مادة اختيارية (لغة أجنبية ثالثة / فنون / موسيقى)" }
+          ]
+        },
+        {
+          "speciality_id": "sciences_informatique",
+          "name": {
+            "fr": "Sciences de l'Informatique",
+            "ar": "شعبة علوم الإعلامية"
+          },
+          "subjects": [
+            { "fr": "Algorithmique et Programmation", "ar": "الخوارزميات والبرمجة" },
+            { "fr": "Bases de Données", "ar": "قواعد البيانات" },
+            { "fr": "Systèmes et Réseaux", "ar": "الأنظمة والشبكات" },
+            { "fr": "Technologies de l'Information et de la Communication (TIC)", "ar": "تكنولوجيا المعلومات والاتصال" },
+            { "fr": "Mathématiques", "ar": "الرياضيات" },
+            { "fr": "Sciences Physiques", "ar": "العلوم الفيزيائية" },
+            { "fr": "Philosophie", "ar": "الفلسفة" },
+            { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+            { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+            { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+            { "fr": "Pensée Islamique", "ar": "التفكير الإسلامي" },
+            { "fr": "Éducation Physique", "ar": "التربية البدنية" },
+            { "fr": "Matière Optionnelle (Langue vivante 3 / Arts / Musique)", "ar": "مادة اختيارية (لغة أجنبية ثالثة / فنون / موسيقى)" }
+          ]
+        },
+        {
+          "speciality_id": "sport",
+          "name": {
+            "fr": "Sport",
+            "ar": "شعبة الرياضة"
+          },
+          "subjects": [
+            { "fr": "Éducation Physique et Sportive (Spécialité)", "ar": "التربية البدنية والرياضية (اختصاص)" },
+            { "fr": "Sciences Biologiques", "ar": "العلوم البيولوجية" },
+            { "fr": "Sciences Physiques", "ar": "العلوم الفيزيائية" },
+            { "fr": "Mathématiques", "ar": "الرياضيات" },
+            { "fr": "Philosophie", "ar": "الفلسفة" },
+            { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+            { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+            { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+            { "fr": "Histoire", "ar": "التاريخ" },
+            { "fr": "Géographie", "ar": "الجغرافيا" },
+            { "fr": "Pensée Islamique", "ar": "التفكير الإسلامي" },
+            { "fr": "Informatique", "ar": "الإعلامية" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade_id": "4eme_secondaire_bac",
+      "grade_name": {
+        "fr": "4ème année secondaire (Baccalauréat)",
+        "ar": "السنة الرابعة ثانوي (البكالوريا)"
+      },
+      "cycle": {
+        "fr": "Enseignement Secondaire (Lycée)",
+        "ar": "التعليم الثانوي"
+      },
+      "national_exam": {
+        "fr": "Examen National du Baccalauréat",
+        "ar": "امتحان البكالوريا الوطني"
+      },
+      "specialities": [
+        {
+          "speciality_id": "bac_mathematiques",
+          "name": {
+            "fr": "Bac Mathématiques",
+            "ar": "بكالوريا رياضيات"
+          },
+          "subjects": [
+            { "fr": "Mathématiques", "ar": "الرياضيات" },
+            { "fr": "Sciences Physiques", "ar": "العلوم الفيزيائية" },
+            { "fr": "Sciences de la Vie et de la Terre (SVT)", "ar": "علوم الحياة والأرض" },
+            { "fr": "Informatique", "ar": "الإعلامية" },
+            { "fr": "Philosophie", "ar": "الفلسفة" },
+            { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+            { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+            { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+            { "fr": "Éducation Physique", "ar": "التربية البدنية" },
+            { "fr": "Matière Optionnelle (Allemand, Espagnol, Italien, Russe, Chinois, Turc, Portugais, Musique, Arts Plastiques)", "ar": "مادة اختيارية (ألمانية، إسبانية، إيطالية، روسية، صينية، تركية، برتغالية، موسيقى، فنون تشكيلية)" }
+          ]
+        },
+        {
+          "speciality_id": "bac_sciences_experimentales",
+          "name": {
+            "fr": "Bac Sciences Expérimentales",
+            "ar": "بكالوريا علوم تجريبية"
+          },
+          "subjects": [
+            { "fr": "Sciences de la Vie et de la Terre (SVT)", "ar": "علوم الحياة والأرض" },
+            { "fr": "Sciences Physiques", "ar": "العلوم الفيزيائية" },
+            { "fr": "Mathématiques", "ar": "الرياضيات" },
+            { "fr": "Informatique", "ar": "الإعلامية" },
+            { "fr": "Philosophie", "ar": "الفلسفة" },
+            { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+            { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+            { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+            { "fr": "Éducation Physique", "ar": "التربية البدنية" },
+            { "fr": "Matière Optionnelle (Langue vivante 3 / Arts / Musique)", "ar": "مادة اختيارية (لغة أجنبية ثالثة / فنون / موسيقى)" }
+          ]
+        },
+        {
+          "speciality_id": "bac_sciences_techniques",
+          "name": {
+            "fr": "Bac Sciences Techniques",
+            "ar": "بكالوريا علوم تقنية"
+          },
+          "subjects": [
+            { "fr": "Technologie (Génie Mécanique & Génie Électrique)", "ar": "التكنولوجيا (هندسة ميكانيكية وهندسة كهربائية)" },
+            { "fr": "Mathématiques", "ar": "الرياضيات" },
+            { "fr": "Sciences Physiques", "ar": "العلوم الفيزيائية" },
+            { "fr": "Informatique", "ar": "الإعلامية" },
+            { "fr": "Philosophie", "ar": "الفلسفة" },
+            { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+            { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+            { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+            { "fr": "Éducation Physique", "ar": "التربية البدنية" },
+            { "fr": "Matière Optionnelle (Langue vivante 3 / Arts / Musique)", "ar": "مادة اختيارية (لغة أجنبية ثالثة / فنون / موسيقى)" }
+          ]
+        },
+        {
+          "speciality_id": "bac_economie_gestion",
+          "name": {
+            "fr": "Bac Économie et Gestion",
+            "ar": "بكالوريا اقتصاد وتصرف"
+          },
+          "subjects": [
+            { "fr": "Économie", "ar": "الاقتصاد" },
+            { "fr": "Gestion", "ar": "التصرف" },
+            { "fr": "Mathématiques", "ar": "الرياضيات" },
+            { "fr": "Informatique", "ar": "الإعلامية" },
+            { "fr": "Histoire", "ar": "التاريخ" },
+            { "fr": "Géographie", "ar": "الجغرافيا" },
+            { "fr": "Philosophie", "ar": "الفلسفة" },
+            { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+            { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+            { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+            { "fr": "Éducation Physique", "ar": "التربية البدنية" },
+            { "fr": "Matière Optionnelle (Langue vivante 3 / Arts / Musique)", "ar": "مادة اختيارية (لغة أجنبية ثالثة / فنون / موسيقى)" }
+          ]
+        },
+        {
+          "speciality_id": "bac_lettres",
+          "name": {
+            "fr": "Bac Lettres",
+            "ar": "بكالوريا آداب"
+          },
+          "subjects": [
+            { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+            { "fr": "Philosophie", "ar": "الفلسفة" },
+            { "fr": "Histoire", "ar": "التاريخ" },
+            { "fr": "Géographie", "ar": "الجغرافيا" },
+            { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+            { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+            { "fr": "Pensée Islamique", "ar": "التفكير الإسلامي" },
+            { "fr": "Informatique", "ar": "الإعلامية" },
+            { "fr": "Éducation Physique", "ar": "التربية البدنية" },
+            { "fr": "Matière Optionnelle (Langue vivante 3 / Arts / Musique)", "ar": "مادة اختيارية (لغة أجنبية ثالثة / فنون / موسيقى)" }
+          ]
+        },
+        {
+          "speciality_id": "bac_sciences_informatique",
+          "name": {
+            "fr": "Bac Sciences de l'Informatique",
+            "ar": "بكالوريا علوم الإعلامية"
+          },
+          "subjects": [
+            { "fr": "Algorithmique et Programmation", "ar": "الخوارزميات والبرمجة" },
+            { "fr": "Bases de Données", "ar": "قواعد البيانات" },
+            { "fr": "Systèmes et Réseaux", "ar": "الأنظمة والشبكات" },
+            { "fr": "Technologies de l'Information et de la Communication (TIC)", "ar": "تكنولوجيا المعلومات والاتصال" },
+            { "fr": "Mathématiques", "ar": "الرياضيات" },
+            { "fr": "Sciences Physiques", "ar": "العلوم الفيزيائية" },
+            { "fr": "Philosophie", "ar": "الفلسفة" },
+            { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+            { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+            { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+            { "fr": "Éducation Physique", "ar": "التربية البدنية" },
+            { "fr": "Matière Optionnelle (Langue vivante 3 / Arts / Musique)", "ar": "مادة اختيارية (لغة أجنبية ثالثة / فنون / موسيقى)" }
+          ]
+        },
+        {
+          "speciality_id": "bac_sport",
+          "name": {
+            "fr": "Bac Sport",
+            "ar": "بكالوريا رياضة"
+          },
+          "subjects": [
+            { "fr": "Éducation Physique et Sportive (Spécialité)", "ar": "التربية البدنية والرياضية (اختصاص)" },
+            { "fr": "Sciences Biologiques", "ar": "العلوم البيولوجية" },
+            { "fr": "Sciences Physiques", "ar": "العلوم الفيزيائية" },
+            { "fr": "Mathématiques", "ar": "الرياضيات" },
+            { "fr": "Philosophie", "ar": "الفلسفة" },
+            { "fr": "Langue Arabe", "ar": "اللغة العربية" },
+            { "fr": "Langue Française", "ar": "اللغة الفرنسية" },
+            { "fr": "Langue Anglaise", "ar": "اللغة الإنجليزية" },
+            { "fr": "Informatique", "ar": "الإعلامية" }
+          ]
+        }
+      ]
+    }
+  ]
+}

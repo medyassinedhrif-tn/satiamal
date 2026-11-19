@@ -85,6 +85,7 @@ model SellerProfile {
   whatsapp    String   @db.VarChar(20)
   messengerUrl String? @map("messenger_url")
   bio         String?  @db.VarChar(300)
+  whatsappMessageTemplate String @default("") @map("whatsapp_message_template") @db.VarChar(500)
   isVerified  Boolean  @default(false) @map("is_verified")
   codeBalance Int      @default(5) @map("code_balance")
   createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz

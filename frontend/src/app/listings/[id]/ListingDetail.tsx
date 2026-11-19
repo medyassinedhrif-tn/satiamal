@@ -5,14 +5,17 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { FormEvent, useCallback, useEffect, useState } from "react";
 import { Turnstile } from "@/components/Turnstile";
+import { useI18n } from "@/i18n";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 type Listing = {
   id: string; title: string; description: string; cycle: string; grade: string; subject: string;
   trimester: number | null; materialType: string; priceTnd: string; previewImages: string[];
-  seller: { sellerProfile: { slug: string; displayName: string; isVerified: boolean; whatsapp: string; messengerUrl: string | null } };
+  seller: { sellerProfile: { slug: string; displayName: string; isVerified: boolean; whatsapp: string; messengerUrl: string | null; whatsappMessageTemplate?: string } };
 };
 
 export default function ListingPage() {
+  const { t } = useI18n();
   const { id } = useParams<{ id: string }>();
   const [listing, setListing] = useState<Listing | null>(null);
   const [phone, setPhone] = useState("");
@@ -66,7 +69,10 @@ export default function ListingPage() {
 
   async function contactSeller() {
     if (!listing) return;
-    window.open(`https://wa.me/${listing.seller.sellerProfile.whatsapp}`, "_blank", "noopener,noreferrer");
+    const template = listing.seller.sellerProfile.whatsappMessageTemplate;
+    const text = template ? template.replaceAll("{title}", listing.title) : "";
+    const query = text ? `?text=${encodeURIComponent(text)}` : "";
+    window.open(`https://wa.me/${listing.seller.sellerProfile.whatsapp}${query}`, "_blank", "noopener,noreferrer");
     void fetch(`/api/public/listings/${listing.id}/click`, { method: "POST" })
       .catch((reason: unknown) => console.error("Could not record listing contact click", reason));
   }
@@ -94,7 +100,7 @@ export default function ListingPage() {
   return (
     <main className="min-h-screen bg-[#f7f8f4] px-5 py-8 text-[#18332f]">
       <div className="mx-auto max-w-6xl">
-        <Link href="/" className="font-bold text-[#0e766e]">← 3alamni.tn</Link>
+        <div className="flex items-center justify-between"><Link href="/" className="font-bold text-[#0e766e]">{t.backToCatalog}</Link><LanguageSwitcher /></div>
         <div className="mt-7 grid gap-8 lg:grid-cols-[1.4fr_1fr]">
           <section>
             <div className="grid gap-3 sm:grid-cols-2">
@@ -108,31 +114,30 @@ export default function ListingPage() {
           </section>
           <aside className="space-y-5">
             <section className="rounded-2xl border border-[#e1e8df] bg-white p-6 shadow-sm">
-              <p className="text-sm text-[#6c867d]">Shared by</p>
+              <p className="text-sm text-[#6c867d]">{t.sharedBy}</p>
               <Link dir="auto" href={`/s/${profile.slug}`} className="mt-1 inline-block text-xl font-bold hover:text-[#0e766e]">{profile.displayName} {profile.isVerified && <span className="text-[#0e766e]">✓</span>}</Link>
               <p className="mt-5 text-3xl font-black text-[#0e766e]">{listing.priceTnd} <small className="text-sm">TND</small></p>
-              <button onClick={contactSeller} className="mt-5 w-full rounded-xl bg-[#0e766e] px-5 py-3 font-bold text-white hover:bg-[#095c56]">Contact on WhatsApp</button>
-              <p className="mt-2 text-center text-xs text-[#71847d]">Coordinate payment directly with the teacher.</p>
+              <button onClick={contactSeller} className="mt-5 w-full rounded-xl bg-[#0e766e] px-5 py-3 font-bold text-white hover:bg-[#095c56]">{t.contactWhatsApp}</button>
+              <p className="mt-2 text-center text-xs text-[#71847d]">{t.directPayment}</p>
             </section>
             <section className="rounded-2xl border border-[#e1e8df] bg-white p-6 shadow-sm">
-              <h2 className="text-lg font-extrabold">Have a download code?</h2>
-              <p className="mt-1 text-sm text-[#71847d]">Enter the code and the phone number it was issued for.</p>
+              <h2 className="text-lg font-extrabold">{t.haveCode}</h2>
+              <p className="mt-1 text-sm text-[#71847d]">{t.codePrompt}</p>
               <form onSubmit={redeem} className="mt-4 space-y-3">
                 <input required value={code} onChange={(event) => setCode(event.target.value)} placeholder="EDU-XXXX" className="w-full rounded-xl border border-[#dce5dd] px-4 py-3" />
-                <input required value={phone} onChange={(event) => setPhone(event.target.value)} placeholder="Phone number" inputMode="tel" className="w-full rounded-xl border border-[#dce5dd] px-4 py-3" />
+                <input required value={phone} onChange={(event) => setPhone(event.target.value)} placeholder={t.phoneNumber} inputMode="tel" className="w-full rounded-xl border border-[#dce5dd] px-4 py-3" />
                 <Turnstile onToken={onToken} />
                 {error && <p role="alert" className="text-sm text-red-700">{error}</p>}
-                <button disabled={busy} className="w-full rounded-xl bg-[#b5ce59] px-5 py-3 font-bold text-[#18332f] disabled:opacity-60">{busy ? "Preparing your download…" : "Download PDF"}</button>
+                <button disabled={busy} className="w-full rounded-xl bg-[#b5ce59] px-5 py-3 font-bold text-[#18332f] disabled:opacity-60">{busy ? t.preparingDownload : t.downloadPdf}</button>
               </form>
             </section>
             <section className="rounded-2xl border border-[#e1e8df] bg-white p-6 shadow-sm">
-              <h2 className="font-extrabold">Report this resource</h2>
+              <h2 className="font-extrabold">{t.report}</h2>
               <form onSubmit={reportListing} className="mt-3 space-y-3">
-                <select value={reportReason} onChange={(event) => setReportReason(event.target.value)} className="w-full rounded-xl border border-[#dce5dd] bg-white px-3 py-3"><option value="PIRACY">Copyright or piracy</option><option value="SCAM">Scam</option><option value="WRONG_INFO">Incorrect information</option></select>
-                <textarea maxLength={400} value={reportDetails} onChange={(event) => setReportDetails(event.target.value)} placeholder="Details (optional)" className="min-h-20 w-full rounded-xl border border-[#dce5dd] px-3 py-3" />
+                <select value={reportReason} onChange={(event) => setReportReason(event.target.value)} className="w-full rounded-xl border border-[#dce5dd] bg-white px-3 py-3"><option value="PIRACY">{t.piracy}</option><option value="SCAM">{t.scam}</option><option value="WRONG_INFO">{t.wrongInfo}</option></select>
+                <textarea maxLength={400} value={reportDetails} onChange={(event) => setReportDetails(event.target.value)} placeholder={t.details} className="min-h-20 w-full rounded-xl border border-[#dce5dd] px-3 py-3" />
                 <Turnstile onToken={onReportToken} />
                 {reportMessage && <p role="status" className="text-sm text-[#526c63]">{reportMessage}</p>}
-                <button className="w-full rounded-xl border border-[#dce5dd] px-4 py-3 font-bold">Send report</button>
               </form>
             </section>
           </aside>

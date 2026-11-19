@@ -83,7 +83,7 @@ export class PublicController {
       select: {
         id: true, title: true, description: true, cycle: true, grade: true, subject: true,
         trimester: true, materialType: true, priceTnd: true, previewImages: true, isBoosted: true,
-        seller: { select: { sellerProfile: { select: { slug: true, displayName: true, isVerified: true, whatsapp: true, messengerUrl: true } } } },
+        seller: { select: { sellerProfile: { select: { slug: true, displayName: true, isVerified: true, whatsapp: true, messengerUrl: true, whatsappMessageTemplate: true } } } },
       },
     });
     if (!listing) throw new NotFoundException();
@@ -193,7 +193,7 @@ export class PublicController {
   }
 
   private async verifyTurnstile(token: string) {
-    if (!process.env.TURNSTILE_SECRET_KEY) {
+    if (!process.env.TURNSTILE_SECRET_KEY || process.env.TURNSTILE_SECRET_KEY === 'local-disabled') {
       if (process.env.NODE_ENV === 'production') throw new UnauthorizedException('Bot protection is not configured');
       return;
     }

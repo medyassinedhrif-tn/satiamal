@@ -94,7 +94,7 @@ export class AuthController {
   }
 
   private async verifyTurnstile(token: string) {
-    if (!process.env.TURNSTILE_SECRET_KEY) {
+    if (!process.env.TURNSTILE_SECRET_KEY || process.env.TURNSTILE_SECRET_KEY === 'local-disabled') {
       if (process.env.NODE_ENV === 'production') throw new UnauthorizedException('Bot protection is not configured');
       return;
     }
