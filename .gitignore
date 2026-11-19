@@ -1,0 +1,11 @@
+node_modules/
+.next/
+dist/
+coverage/
+.env
+.env.*
+!.env.example
+*.tsbuildinfo
+backend/prisma/dev.db
+/certbot/conf/
+/certbot/www/
