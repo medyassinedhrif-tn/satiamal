@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useCallback, useEffect, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import { useI18n } from "@/i18n";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 type Dashboard = { codeBalance: number; contactClicks: number; activeListings: number; totalListings: number; codesGenerated: number };
 type Listing = { id: string; title: string; grade: string; subject: string; priceTnd: string; status: string };
@@ -14,6 +16,7 @@ function csrfToken() {
 }
 
 export default function DashboardPage() {
+  const { t } = useI18n();
   const router = useRouter();
   const [stats, setStats] = useState<Dashboard | null>(null);
   const [listings, setListings] = useState<Listing[]>([]);
@@ -173,70 +176,70 @@ export default function DashboardPage() {
 
   return <main className="min-h-screen bg-[#f7f8f4] px-5 py-7 text-[#18332f]">
     <div className="mx-auto max-w-7xl">
-      <header className="flex items-center justify-between"><Link href="/" className="text-xl font-black text-[#0e766e]">3alamni.tn</Link><button onClick={logout} className="text-sm font-bold text-[#0e766e]">Sign out</button></header>
-      <div className="mt-8 flex flex-wrap items-end justify-between gap-3"><div><p className="text-sm font-bold uppercase tracking-widest text-[#7b928a]">Seller portal</p><h1 className="text-3xl font-black">Your classroom store</h1></div><Link href="/register" className="text-sm font-bold text-[#0e766e]">Store setup help</Link></div>
+      <header className="flex items-center justify-between"><Link href="/" className="text-xl font-black text-[#0e766e]">3alamni.tn</Link><div className="flex items-center gap-3"><LanguageSwitcher /><button onClick={logout} className="text-sm font-bold text-[#0e766e]">{t.signOut}</button></div></header>
+      <div className="mt-8 flex flex-wrap items-end justify-between gap-3"><div><p className="text-sm font-bold uppercase tracking-widest text-[#7b928a]">{t.sellerPortal}</p><h1 className="text-3xl font-black">{t.yourStore}</h1></div></div>
       {error && <p role="alert" className="mt-5 rounded-xl bg-red-50 p-4 text-red-800">{error}</p>}
       {message && <p role="status" className="mt-5 rounded-xl bg-emerald-50 p-4 text-emerald-900">{message}</p>}
       <section className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{[
-        ["Codes available", stats?.codeBalance], ["Contact clicks", stats?.contactClicks], ["Active listings", stats?.activeListings], ["Codes generated", stats?.codesGenerated],
+        [t.codesAvailable, stats?.codeBalance], [t.contactClicks, stats?.contactClicks], [t.activeListings, stats?.activeListings], [t.codesGenerated, stats?.codesGenerated],
       ].map(([label, value]) => <div key={label} className="rounded-2xl border border-[#e1e8df] bg-white p-5"><p className="text-sm text-[#71847d]">{label}</p><p className="mt-2 text-3xl font-black">{value ?? "—"}</p></div>)}</section>
 
       <div className="mt-8 grid gap-6 lg:grid-cols-2">
         <section className="rounded-2xl border border-[#e1e8df] bg-white p-6">
-          <h2 className="text-xl font-extrabold">Publish a resource</h2>
+          <h2 className="text-xl font-extrabold">{t.publishResource}</h2>
           <form onSubmit={createListing} className="mt-4 grid gap-3 sm:grid-cols-2">
-            <input required name="title" placeholder="Title" className="rounded-xl border border-[#dce5dd] px-3 py-3 sm:col-span-2" />
-            <textarea required name="description" placeholder="Description" className="min-h-24 rounded-xl border border-[#dce5dd] px-3 py-3 sm:col-span-2" />
-            <select required name="cycle" className="rounded-xl border border-[#dce5dd] bg-white px-3 py-3"><option value="">Level</option><option value="primaire">Primaire</option><option value="college">Collège</option><option value="lycee">Lycée</option></select>
-            <input required name="grade" placeholder="Grade (e.g. bac-math)" className="rounded-xl border border-[#dce5dd] px-3 py-3" />
-            <input required name="subject" placeholder="Subject" className="rounded-xl border border-[#dce5dd] px-3 py-3" />
-            <select required name="materialType" className="rounded-xl border border-[#dce5dd] bg-white px-3 py-3">{["joudhadha", "devoir", "serie", "cours"].map((item) => <option key={item} value={item}>{item}</option>)}</select>
-            <select name="trimester" className="rounded-xl border border-[#dce5dd] bg-white px-3 py-3"><option value="">No trimester</option><option value="1">Trimester 1</option><option value="2">Trimester 2</option><option value="3">Trimester 3</option></select>
-            <input required type="number" min="0" step="0.01" name="priceTnd" placeholder="Price (TND)" className="rounded-xl border border-[#dce5dd] px-3 py-3" />
-            <label className="text-sm sm:col-span-2">Preview images (1–4, JPEG/PNG/WebP)<input required multiple accept="image/jpeg,image/png,image/webp" type="file" name="previews" className="mt-1 block w-full text-sm" /></label>
-            <label className="text-sm sm:col-span-2">Full document (PDF)<input required accept="application/pdf" type="file" name="pdf" className="mt-1 block w-full text-sm" /></label>
-            <button className="rounded-xl bg-[#0e766e] px-4 py-3 font-bold text-white sm:col-span-2">Publish listing</button>
+            <input required name="title" placeholder={t.title} className="rounded-xl border border-[#dce5dd] px-3 py-3 sm:col-span-2" />
+            <textarea required name="description" placeholder={t.description} className="min-h-24 rounded-xl border border-[#dce5dd] px-3 py-3 sm:col-span-2" />
+            <select required name="cycle" className="rounded-xl border border-[#dce5dd] bg-white px-3 py-3"><option value="">{t.level}</option><option value="primaire">{t.primaire}</option><option value="college">{t.college}</option><option value="lycee">{t.lycee}</option></select>
+            <input required name="grade" placeholder={t.gradeExample} className="rounded-xl border border-[#dce5dd] px-3 py-3" />
+            <input required name="subject" placeholder={t.subjectPlaceholder} className="rounded-xl border border-[#dce5dd] px-3 py-3" />
+            <select required name="materialType" className="rounded-xl border border-[#dce5dd] bg-white px-3 py-3">{["joudhadha", "devoir", "serie", "cours"].map((item) => <option key={item} value={item}>{item === "joudhadha" ? t.joudhadha : item === "devoir" ? t.devoir : item === "serie" ? t.serie : t.cours}</option>)}</select>
+            <select name="trimester" className="rounded-xl border border-[#dce5dd] bg-white px-3 py-3"><option value="">— {t.noTrimester}</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
+            <input required type="number" min="0" step="0.01" name="priceTnd" placeholder={t.price} className="rounded-xl border border-[#dce5dd] px-3 py-3" />
+            <label className="text-sm sm:col-span-2">{t.previewHint}<input required multiple accept="image/jpeg,image/png,image/webp" type="file" name="previews" className="mt-1 block w-full text-sm" /></label>
+            <label className="text-sm sm:col-span-2">{t.fullDocument}<input required accept="application/pdf" type="file" name="pdf" className="mt-1 block w-full text-sm" /></label>
+            <button className="rounded-xl bg-[#0e766e] px-4 py-3 font-bold text-white sm:col-span-2">{t.publishListing}</button>
           </form>
         </section>
 
         <section className="space-y-6">
           <div className="rounded-2xl border border-[#e1e8df] bg-white p-6">
-            <h2 className="text-xl font-extrabold">Create a download code</h2>
+            <h2 className="text-xl font-extrabold">{t.createCode}</h2>
             <form onSubmit={createCode} className="mt-4 space-y-3">
-              <select required value={codeForm.listingId} onChange={(event) => setCodeForm({ ...codeForm, listingId: event.target.value })} className="w-full rounded-xl border border-[#dce5dd] bg-white px-3 py-3"><option value="">Choose listing</option>{listings.map((item) => <option key={item.id} value={item.id}>{item.title}</option>)}</select>
-              <input required inputMode="tel" value={codeForm.buyerPhone} onChange={(event) => setCodeForm({ ...codeForm, buyerPhone: event.target.value })} placeholder="Buyer phone" className="w-full rounded-xl border border-[#dce5dd] px-3 py-3" />
-              <input value={codeForm.buyerNote} onChange={(event) => setCodeForm({ ...codeForm, buyerNote: event.target.value })} placeholder="Buyer note (optional)" className="w-full rounded-xl border border-[#dce5dd] px-3 py-3" />
-              <button className="w-full rounded-xl bg-[#b5ce59] px-4 py-3 font-bold">Generate code</button>
+              <select required value={codeForm.listingId} onChange={(event) => setCodeForm({ ...codeForm, listingId: event.target.value })} className="w-full rounded-xl border border-[#dce5dd] bg-white px-3 py-3"><option value="">{t.chooseListing}</option>{listings.map((item) => <option key={item.id} value={item.id}>{item.title}</option>)}</select>
+              <input required inputMode="tel" value={codeForm.buyerPhone} onChange={(event) => setCodeForm({ ...codeForm, buyerPhone: event.target.value })} placeholder={t.buyerPhonePlaceholder} className="w-full rounded-xl border border-[#dce5dd] px-3 py-3" />
+              <input value={codeForm.buyerNote} onChange={(event) => setCodeForm({ ...codeForm, buyerNote: event.target.value })} placeholder={t.buyerNotePlaceholder} className="w-full rounded-xl border border-[#dce5dd] px-3 py-3" />
+              <button className="w-full rounded-xl bg-[#b5ce59] px-4 py-3 font-bold">{t.generateCode}</button>
             </form>
-            <form onSubmit={findCodes} className="mt-5 flex gap-2"><input value={lookupPhone} onChange={(event) => setLookupPhone(event.target.value)} placeholder="Search buyer phone" inputMode="tel" className="min-w-0 flex-1 rounded-xl border border-[#dce5dd] px-3 py-2 text-sm" /><button className="rounded-xl border border-[#dce5dd] px-3 text-sm font-bold">Search</button></form>
-            <div className="mt-3 space-y-2">{codes.slice(0, 5).map((item) => <div key={item.id} className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-[#f6f8f3] p-3 text-sm"><span className="font-bold">{item.code} · {item.buyerPhone} · {item.downloadCount}/3</span>{!item.isRevoked && <button onClick={() => void revokeCode(item.id)} className="font-bold text-red-700">Revoke</button>}</div>)}</div>
+            <form onSubmit={findCodes} className="mt-5 flex gap-2"><input value={lookupPhone} onChange={(event) => setLookupPhone(event.target.value)} placeholder={t.searchBuyerPhone} inputMode="tel" className="min-w-0 flex-1 rounded-xl border border-[#dce5dd] px-3 py-2 text-sm" /><button className="rounded-xl border border-[#dce5dd] px-3 text-sm font-bold">{t.searchAction}</button></form>
+            <div className="mt-3 space-y-2">{codes.slice(0, 5).map((item) => <div key={item.id} className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-[#f6f8f3] p-3 text-sm"><span className="font-bold">{item.code} · {item.buyerPhone} · {item.downloadCount}/3</span>{!item.isRevoked && <button onClick={() => void revokeCode(item.id)} className="font-bold text-red-700">{t.revokeAction}</button>}</div>)}</div>
           </div>
 
           <div className="rounded-2xl border border-[#e1e8df] bg-white p-6">
-            <h2 className="text-xl font-extrabold">Your listings</h2>
-            <div className="mt-3 space-y-2">{listings.map((item) => <div key={item.id} className="rounded-xl bg-[#f6f8f3] p-3"><div className="flex flex-wrap items-center justify-between gap-2"><div><p dir="auto" className="font-bold">{item.title}</p><p className="text-xs text-[#71847d]">{item.grade} · {item.subject} · {item.status}</p></div><div className="flex gap-2"><button onClick={() => void editListing(item)} className="rounded-lg border border-[#cbd8ce] px-3 py-2 text-sm font-bold">Edit</button><button onClick={() => void deleteListing(item)} className="rounded-lg border border-[#cbd8ce] px-3 py-2 text-sm font-bold text-red-700">Delete</button><button onClick={() => void generatePack(item.id)} className="rounded-lg border border-[#cbd8ce] px-3 py-2 text-sm font-bold">Facebook pack</button></div></div>{facebookPack?.listingId === item.id && <div className="mt-3 border-t border-[#e1e8df] pt-3"><p dir="auto" className="whitespace-pre-wrap text-sm">{facebookPack.text}</p><div className="mt-3 flex flex-wrap gap-3">{facebookPack.previewImages.map((url, index) => <a key={url} href={url} download target="_blank" rel="noreferrer" className="text-sm font-bold text-[#0e766e]">Download watermarked preview {index + 1}</a>)}</div></div>}</div>)}</div>
+            <h2 className="text-xl font-extrabold">{t.yourListings}</h2>
+            <div className="mt-3 space-y-2">{listings.map((item) => <div key={item.id} className="rounded-xl bg-[#f6f8f3] p-3"><div className="flex flex-wrap items-center justify-between gap-2"><div><p dir="auto" className="font-bold">{item.title}</p><p className="text-xs text-[#71847d]">{item.grade} · {item.subject} · {item.status === "ACTIVE" ? t.activeStatus : t.hiddenStatus}</p></div><div className="flex gap-2"><button onClick={() => void editListing(item)} className="rounded-lg border border-[#cbd8ce] px-3 py-2 text-sm font-bold">{t.editAction}</button><button onClick={() => void deleteListing(item)} className="rounded-lg border border-[#cbd8ce] px-3 py-2 text-sm font-bold text-red-700">{t.deleteAction}</button><button onClick={() => void generatePack(item.id)} className="rounded-lg border border-[#cbd8ce] px-3 py-2 text-sm font-bold">{t.facebookPack}</button></div></div>{facebookPack?.listingId === item.id && <div className="mt-3 border-t border-[#e1e8df] pt-3"><p dir="auto" className="whitespace-pre-wrap text-sm">{facebookPack.text}</p><div className="mt-3 flex flex-wrap gap-3">{facebookPack.previewImages.map((url, index) => <a key={url} href={url} download target="_blank" rel="noreferrer" className="text-sm font-bold text-[#0e766e]">{t.downloadPreview} {index + 1}</a>)}</div></div>}</div>)}</div>
           </div>
         </section>
 
         <section className="rounded-2xl border border-[#e1e8df] bg-white p-6">
-          <h2 className="text-xl font-extrabold">Leak lookup</h2>
+          <h2 className="text-xl font-extrabold">{t.leakLookup}</h2>
           <form onSubmit={uploadLeak} className="mt-4 flex flex-wrap gap-3">
             <input required type="file" name="file" accept="application/pdf,image/*" className="min-w-0 flex-1 text-sm" />
-            <button className="rounded-xl bg-[#0e766e] px-4 py-2 font-bold text-white">Inspect PDF or screenshot</button>
+            <button className="rounded-xl bg-[#0e766e] px-4 py-2 font-bold text-white">{t.inspectLeak}</button>
           </form>
         </section>
 
         <section className="rounded-2xl border border-[#e1e8df] bg-white p-6">
-          <h2 className="text-xl font-extrabold">Code packs & listing boosts</h2>
+          <h2 className="text-xl font-extrabold">{t.codePacks}</h2>
           <form onSubmit={createTopup} className="mt-4 grid gap-3 sm:grid-cols-2">
-            <select name="topupType" className="rounded-xl border border-[#dce5dd] bg-white px-3 py-3"><option value="CODE_PACK">Code pack</option><option value="BOOST">Listing boost</option></select>
-            <select name="packCodes" className="rounded-xl border border-[#dce5dd] bg-white px-3 py-3"><option value="15">15 codes</option><option value="50">50 codes</option><option value="100">100 codes</option></select>
-            <select name="listingId" className="rounded-xl border border-[#dce5dd] bg-white px-3 py-3"><option value="">Listing to boost (optional)</option>{listings.map((item) => <option key={item.id} value={item.id}>{item.title}</option>)}</select>
-            <select name="boostDays" className="rounded-xl border border-[#dce5dd] bg-white px-3 py-3"><option value="7">7 days</option><option value="14">14 days</option><option value="30">30 days</option></select>
-            <input required name="amountTnd" type="number" min="0" step="0.01" placeholder="Amount (TND)" className="rounded-xl border border-[#dce5dd] px-3 py-3" />
+            <select name="topupType" className="rounded-xl border border-[#dce5dd] bg-white px-3 py-3"><option value="CODE_PACK">{t.codePack}</option><option value="BOOST">{t.listingBoost}</option></select>
+            <select name="packCodes" className="rounded-xl border border-[#dce5dd] bg-white px-3 py-3"><option value="15">15 {t.codes}</option><option value="50">50 {t.codes}</option><option value="100">100 {t.codes}</option></select>
+            <select name="listingId" className="rounded-xl border border-[#dce5dd] bg-white px-3 py-3"><option value="">— {t.listingOptional}</option>{listings.map((item) => <option key={item.id} value={item.id}>{item.title}</option>)}</select>
+            <select name="boostDays" className="rounded-xl border border-[#dce5dd] bg-white px-3 py-3"><option value="7">7 {t.days}</option><option value="14">14 {t.days}</option><option value="30">30 {t.days}</option></select>
+            <input required name="amountTnd" type="number" min="0" step="0.01" placeholder={t.amount} className="rounded-xl border border-[#dce5dd] px-3 py-3" />
             <select name="paymentMethod" className="rounded-xl border border-[#dce5dd] bg-white px-3 py-3"><option>D17</option><option>FLOUCI</option><option>RIB</option></select>
-            <input required name="receiptRef" placeholder="Transfer reference" className="rounded-xl border border-[#dce5dd] px-3 py-3 sm:col-span-2" />
-            <button className="rounded-xl bg-[#b5ce59] px-4 py-3 font-bold sm:col-span-2">Submit for manual review</button>
+            <input required name="receiptRef" placeholder={t.transferReference} className="rounded-xl border border-[#dce5dd] px-3 py-3 sm:col-span-2" />
+            <button className="rounded-xl bg-[#b5ce59] px-4 py-3 font-bold sm:col-span-2">{t.submitForReview}</button>
           </form>
         </section>
       </div>

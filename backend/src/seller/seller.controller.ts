@@ -274,6 +274,12 @@ export class SellerController {
     if (body.topupType === 'CODE_PACK' && ![15, 50, 100].includes(body.packCodes ?? 0)) {
       throw new BadRequestException('Choose a supported code pack');
     }
+    if (body.topupType === 'CODE_PACK') {
+      const packPrices: Record<number, number> = { 15: 15, 50: 35, 100: 50 };
+      if (Number(body.amountTnd) !== packPrices[body.packCodes ?? 0]) {
+        throw new BadRequestException('The code pack amount is incorrect');
+      }
+    }
     if (body.topupType === 'BOOST' && (!body.listingId || ![7, 14, 30].includes(body.boostDays ?? 0))) {
       throw new BadRequestException('Choose a listing and a 7, 14, or 30 day boost');
     }

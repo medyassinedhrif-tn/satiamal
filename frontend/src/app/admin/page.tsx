@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useCallback, useEffect, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import { useI18n } from "@/i18n";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 type Topup = {
   id: string; topupType: string; packCodes: number | null; boostDays: number | null;
@@ -18,6 +20,7 @@ function csrfToken() {
 }
 
 export default function AdminPage() {
+  const { t } = useI18n();
   const router = useRouter();
   const [topups, setTopups] = useState<Topup[]>([]);
   const [reports, setReports] = useState<Report[]>([]);
@@ -150,19 +153,19 @@ export default function AdminPage() {
 
   return <main className="min-h-screen bg-[#f7f8f4] px-5 py-7 text-[#18332f]">
     <div className="mx-auto max-w-6xl">
-      <header className="flex items-center justify-between"><Link href="/" className="text-xl font-black text-[#0e766e]">3alamni.tn</Link><Link href="/dashboard" className="text-sm font-bold text-[#0e766e]">Seller portal</Link></header>
-      <p className="mt-8 text-sm font-bold uppercase tracking-widest text-[#7b928a]">Administration</p>
-      <h1 className="text-3xl font-black">Review queue</h1>
+      <header className="flex items-center justify-between"><Link href="/" className="text-xl font-black text-[#0e766e]">3alamni.tn</Link><div className="flex items-center gap-3"><LanguageSwitcher /><Link href="/dashboard" className="text-sm font-bold text-[#0e766e]">{t.sellerPortal}</Link></div></header>
+      <p className="mt-8 text-sm font-bold uppercase tracking-widest text-[#7b928a]">{t.admin}</p>
+      <h1 className="text-3xl font-black">{t.reviewQueue}</h1>
       {error && <p role="alert" className="mt-5 rounded-xl bg-red-50 p-4 text-red-800">{error}</p>}
       {message && <p role="status" className="mt-5 rounded-xl bg-emerald-50 p-4 text-emerald-900">{message}</p>}
       {createdSeller && <p className="mt-3 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-900">Account: <b>{createdSeller.email}</b> · Store: <Link className="font-bold underline" href={`/s/${createdSeller.slug}`}>/{createdSeller.slug}</Link>. Hand credentials to the teacher securely.</p>}
       <section className="mt-7 rounded-2xl border border-[#e1e8df] bg-white p-6">
-        <h2 className="text-xl font-extrabold">Payment requests <span className="text-sm text-[#71847d]">({topups.length})</span></h2>
+        <h2 className="text-xl font-extrabold">{t.paymentRequestsCount} <span className="text-sm text-[#71847d]">({topups.length})</span></h2>
         <div className="mt-4 space-y-3">{topups.map((item) => <article key={item.id} className="flex flex-wrap items-center justify-between gap-4 rounded-xl bg-[#f6f8f3] p-4">
           <div><p className="font-bold">{item.seller.sellerProfile?.displayName ?? item.seller.email} · {item.topupType === "CODE_PACK" ? `${item.packCodes} codes` : `${item.boostDays} day boost`}</p><p className="mt-1 text-sm text-[#71847d]">{item.amountTnd} TND via {item.paymentMethod} · {item.receiptRef}</p></div>
           <div className="flex gap-2"><button onClick={() => void reviewTopup(item.id, "APPROVED")} className="rounded-lg bg-[#0e766e] px-3 py-2 text-sm font-bold text-white">Approve</button><button onClick={() => void reviewTopup(item.id, "REJECTED")} className="rounded-lg border border-[#dce5dd] px-3 py-2 text-sm font-bold">Reject</button></div>
         </article>)}</div>
-        {topups.length === 0 && <p className="mt-3 text-sm text-[#71847d]">No pending payment requests.</p>}
+        {topups.length === 0 && <p className="mt-3 text-sm text-[#71847d]">{t.noPendingTopups}</p>}
       </section>
       <section className="mt-6 rounded-2xl border border-[#e1e8df] bg-white p-6">
         <h2 className="text-xl font-extrabold">Listing reports <span className="text-sm text-[#71847d]">({reports.length})</span></h2>
@@ -170,19 +173,19 @@ export default function AdminPage() {
           <div><p className="font-bold">{item.reason} · {item.listing.title}</p><p className="mt-1 text-sm text-[#71847d]">{item.details || "No details provided"}</p><Link href={`/listings/${item.listing.id}`} className="text-sm font-bold text-[#0e766e]">View listing</Link></div>
           <div className="flex gap-2"><button onClick={() => void closeReport(item.id, "RESOLVED")} className="rounded-lg bg-[#0e766e] px-3 py-2 text-sm font-bold text-white">Resolve</button><button onClick={() => void closeReport(item.id, "DISMISSED")} className="rounded-lg border border-[#dce5dd] px-3 py-2 text-sm font-bold">Dismiss</button></div>
         </article>)}</div>
-        {reports.length === 0 && <p className="mt-3 text-sm text-[#71847d]">No open reports.</p>}
+        {reports.length === 0 && <p className="mt-3 text-sm text-[#71847d]">{t.noPendingReports}</p>}
       </section>
       <section className="mt-6 rounded-2xl border border-[#e1e8df] bg-white p-6">
-        <h2 className="text-xl font-extrabold">Teacher verification</h2>
+        <h2 className="text-xl font-extrabold">{t.teacherVerificationTitle}</h2>
         <div className="mt-4 space-y-3">{sellers.map((seller) => <article key={seller.id} className="flex flex-wrap items-center justify-between gap-3 rounded-xl bg-[#f6f8f3] p-4"><div><p className="font-bold">{seller.sellerProfile?.displayName ?? seller.email}</p><p className="text-sm text-[#71847d]">{seller.email} · /s/{seller.sellerProfile?.slug}</p></div><button onClick={() => void verifySeller(seller)} className="rounded-lg border border-[#dce5dd] px-3 py-2 text-sm font-bold">{seller.sellerProfile?.isVerified ? "Remove verification" : "Verify teacher"}</button></article>)}</div>
       </section>
       <section className="mt-6 rounded-2xl border border-[#e1e8df] bg-white p-6">
-        <h2 className="text-xl font-extrabold">Listing moderation</h2>
+        <h2 className="text-xl font-extrabold">{t.listingModerationTitle}</h2>
         <div className="mt-4 space-y-3">{listings.map((item) => <article key={item.id} className="flex flex-wrap items-center justify-between gap-3 rounded-xl bg-[#f6f8f3] p-4"><div><p className="font-bold">{item.title}</p><p className="text-sm text-[#71847d]">{item.seller.sellerProfile?.displayName} · {item.grade} · {item.subject} · {item.status}</p></div><button onClick={() => void moderateListing(item)} className="rounded-lg border border-[#dce5dd] px-3 py-2 text-sm font-bold">{item.status === "ACTIVE" ? "Hide listing" : "Restore listing"}</button></article>)}</div>
       </section>
       <section className="mt-6 rounded-2xl border border-[#e1e8df] bg-white p-6">
-        <h2 className="text-xl font-extrabold">Concierge seller setup</h2>
-        <p className="mt-2 text-sm text-[#71847d]">Create a seller account, optionally with one launch listing. Keep the temporary password secure and hand it over directly to the teacher.</p>
+        <h2 className="text-xl font-extrabold">{t.conciergeTitle}</h2>
+        <p className="mt-2 text-sm text-[#71847d]">{t.conciergeIntro}</p>
         <form onSubmit={createConciergeSeller} className="mt-4 grid gap-3 sm:grid-cols-2">
           <input required name="displayName" placeholder="Teacher display name" className="rounded-xl border border-[#dce5dd] px-3 py-3" />
           <input required name="slug" pattern="[a-z0-9-]{3,60}" placeholder="Store slug" className="rounded-xl border border-[#dce5dd] px-3 py-3" />

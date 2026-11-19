@@ -19,6 +19,18 @@ The public catalog works without a buyer account. Sellers register at `/register
 admins are provisioned out-of-band and use `/admin`. Configure Turnstile and R2
 before enabling public registration, downloads, or file uploads in production.
 
+## GitHub Codespaces
+
+For an HTTP preview behind the Codespaces HTTPS proxy, start the app with:
+
+```sh
+docker compose -f docker-compose.yml -f docker-compose.codespaces.yml up --build -d postgres redis backend frontend codespaces-proxy
+```
+
+Open port `3000` from the Codespaces **Ports** tab. The proxy routes the frontend
+and `/api/*` requests without exposing the backend port directly. Codespaces
+provides HTTPS externally; do not use this preview proxy for production.
+
 ## Deployment notes
 
 Nginx expects TLS files under `certbot/conf/live/<DOMAIN>/`. Obtain the initial
